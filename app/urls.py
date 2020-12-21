@@ -16,7 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
+# Core/-map core to core.urls then within empty path maps to home view. Sends remaining string to core.urls, send remaining after core/ so it sends an empty string
+# to core.urls
+
+# Match patterns in the urls.py in the other py file. Chops off core/ and passes anthing after to core.urls, checks for matches and then goes
+# to the views function
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('core/', include('core.urls'))
+    path('', include('core.urls'))
 ]

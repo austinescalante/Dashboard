@@ -1,8 +1,14 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 
 # Create your views here.
 
+# Return a render template instead of httpresponse
+# Takes request as first argument, second is the template name. Third optional argument is context
 
-def screen(index):
-    return HttpResponse("Dashboard")
+
+def home(request):
+    return render(request, 'core/home.html')
+
+
+def about(request):
+    return render(request, 'core/about.html')
