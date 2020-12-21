@@ -1,11 +1,23 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-</head>
-
-<body>
-    <h1>Dashboard Home</h1>
-</body>
-
-</html>
+<!--Use base template by extending it-->
+{% extends "core/base.html"%}
+<!--we want for loop in the home template to override that content section, wrap in content block-->
+{% block content %}
+    <!-- Code block(two curly and two percent):For Loop for the posts dictionary, need to end loops within templates  -->
+    {% for post in posts %}
+    <!-- Access a variable use double curly
+        <h1>{{ post.Title }}</h1>
+        <p>By {{ post.Name }} on {{ post.Date_Hired }}</p>
+         Print out content of post
+        <p>{{ post.EmployeeID }}</p> -->
+        <article class="media content-section">
+            <div class="media-body">
+              <div class="article-metadata">
+                <a class="mr-2" href="#">{{ post.Title }}</a>
+                <small class="text-muted">{{ post.Date_Hired }}</small>
+              </div>
+              <h2><a class="article-title" href="#">{{ post.Name }}</a></h2>
+              <p class="article-content">{{ post.EmployeeID }}</p>
+            </div>
+          </article>
+    {% endfor %}
+{% endblock content %}
