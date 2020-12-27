@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Patient
 
 # Create your views here.
 
@@ -6,6 +7,7 @@ from django.shortcuts import render
 # Takes request as first argument, second is the template name. Third optional argument is context
 
 # Dictionary
+'''
 posts = [
     {
         'Name': 'Jake',
@@ -20,13 +22,16 @@ posts = [
         'Date_Hired': 'April 24, 2020'
     }
 ]
+'''
+
+data = Patient.objects.all()
 
 
 def home(request):
     # create a dictionary called context.Create a key within the dictionary called post, value assigned will be posts dictionary.
     # Now we can pass context to the render function and pass data into our template to use.
     context = {
-        'posts': posts
+        'patients': data
     }
     return render(request, 'core/home.html', context)
 
