@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from users import views as users_views
 
 # Core/-map core to core.urls then within empty path maps to home view. Sends remaining string to core.urls, send remaining after core/ so it sends an empty string
 # to core.urls
@@ -23,5 +24,6 @@ from django.urls import include, path
 # to the views function
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('register/', users_views.register, name='register'),
     path('', include('core.urls'))
 ]
