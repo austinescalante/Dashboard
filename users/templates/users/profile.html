@@ -1,0 +1,6 @@
+{% extends "core/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<!-- Do not need to pass into context, built in to djnago for current user, instance-->
+    <h1>{{ user.username }}</h1>
+{% endblock content %}

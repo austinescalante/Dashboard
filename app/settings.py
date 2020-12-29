@@ -131,3 +131,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+# Redirects successful login to home page
+LOGIN_REDIRECT_URL = 'home'
+
+# For profile authenticator for decorator. Forces user to login before accessing profile page
+LOGIN_URL = 'login'

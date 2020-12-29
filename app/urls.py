@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from users import views as users_views
+# add django supported login/logout paths
+from django.contrib.auth import views as auth_views
 
 # Core/-map core to core.urls then within empty path maps to home view. Sends remaining string to core.urls, send remaining after core/ so it sends an empty string
 # to core.urls
@@ -25,5 +27,10 @@ from users import views as users_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('register/', users_views.register, name='register'),
-    path('', include('core.urls'))
+    # Login and Logout are class based views, does not run templates. Default with no template name is the django admin site login or logout
+    path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
+    path('profile/', users_views.Profile, name='profile'),
+    path('', include('core.urls')),
+
 ]
