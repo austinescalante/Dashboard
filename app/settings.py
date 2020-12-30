@@ -16,6 +16,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 #username: TestUser
 #PW: Adminpass123
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -129,6 +130,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# For images, where djnago can store the files
+
+# Where uploaded files will be located on the file system
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# Public directory, through browser
+MEDIA_URL = '/media/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 

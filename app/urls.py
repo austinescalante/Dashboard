@@ -19,6 +19,9 @@ from users import views as users_views
 # add django supported login/logout paths
 from django.contrib.auth import views as auth_views
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 # Core/-map core to core.urls then within empty path maps to home view. Sends remaining string to core.urls, send remaining after core/ so it sends an empty string
 # to core.urls
 
@@ -32,5 +35,8 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
     path('profile/', users_views.Profile, name='profile'),
     path('', include('core.urls')),
-
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
