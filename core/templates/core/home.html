@@ -17,10 +17,13 @@
                 <small class="text-muted"> SEX: {{ patient.Sex }}</small>
                 <small class="text-muted"> DOB: {{ patient.DOB }}</small>
               </div>
-              <h2><a class="article-title" href="#">{{ patient.FirstName }}</a></h2>
+              <h2><a class="article-title" href="{% url 'patient-detail' patient.id %}">{{ patient.FirstName }}</a></h2>
               <p class="article-content">Patient SSN: {{ patient.PatientSSN }}</p>
               <p class="article-content">Address: {{ patient.Address }}</p>
             </div>
           </article>
     {% endfor %}
 {% endblock content %}
+
+<!-- Create a separate html that redirects the hyperinks for the Patient ID to an html page that will 
+show the Patient's information. So instead on the Dashboard/home page list only the hyperlinks for patients-->

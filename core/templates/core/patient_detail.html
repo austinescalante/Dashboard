@@ -1,0 +1,23 @@
+<!--Use base template by extending it-->
+{% extends "core/base.html"%}
+<!--we want for loop in the home template to override that content section, wrap in content block-->
+{% block content %}
+    <!-- Access a variable use double curly
+        <h1>{{ post.Title }}</h1>
+        <p>By {{ post.Name }} on {{ post.Date_Hired }}</p>
+         Print out content of post
+        <p>{{ post.EmployeeID }}</p> -->
+        <article class="media content-section">
+            <div class="media-body">
+              <div class="article-metadata">
+                <a class="mr-2" href="#">Patient ID: {{ object.PatientID }}</a>
+                <small class="text-muted">{{ object.LastName }}</small>
+                <small class="text-muted"> SEX: {{ object.Sex }}</small>
+                <small class="text-muted"> DOB: {{ object.DOB }}</small>
+              </div>
+              <h2 class="article-title">{{ object.FirstName }}</h2>
+              <p class="article-content">Patient SSN: {{ object.PatientSSN }}</p>
+              <p class="article-content">Address: {{ object.Address }}</p>
+            </div>
+          </article>
+{% endblock content %}

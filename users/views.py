@@ -25,7 +25,7 @@ def register(request):
         form = UserRegisterForm()
     return render(request, 'users/register.html', {'form': form})
 
-# Decorator for function, user must be logged in to view the profile
+# Decorator for function, user must be logged in to view the profile. Profile path will not redirect user until the user has log in status
 
 
 @login_required

@@ -1,5 +1,7 @@
 from django.shortcuts import render
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import Patient
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 # Create your views here.
 
@@ -34,6 +36,60 @@ def home(request):
         'patients': data
     }
     return render(request, 'core/home.html', context)
+
+# Class based view
+
+
+class PatientListView(ListView):
+    model = Patient
+    template_name = 'core/home.html'
+    # <app>/<model>_<viewtype>.html
+    context_object_name = 'patients'
+    ordering = ['DOB']
+
+
+class PatientDetailView(DetailView):
+    model = Patient
+
+# View with a form to create a patient
+
+# LoginRequiredMixin redirects not logged in user to login to add a new form
+
+
+class PatientCreateView(LoginRequiredMixin, CreateView):
+    model = Patient
+    fields = ['FirstName', 'DOB']
+
+    def form_valid(self, form):
+        return super().form_valid(form)
+
+
+class PatientUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Patient
+    fields = ['FirstName', 'DOB']
+
+    def form_valid(self, form):
+        return super().form_valid(form)
+
+    def test_func(self):
+        # get object, Prevent other users from updating other patients info.
+        patient = self.get_object()
+        # if self.request.user == patient.author:
+        # return True
+        # return False
+
+# Require a user logged in and Author of view
+
+
+class PatientDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeletelView):
+    model = Patient
+
+    def test_func(self):
+        # get object, Prevent other users from updating other patients info.
+        patient = self.get_object()
+        # if self.request.user == patient.author:
+        # return True
+        # return False
 
 
 def about(request):

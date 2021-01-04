@@ -1,6 +1,9 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from django.urls import reverse
+
+# Add an author to patient for posts
 
 
 class Patient(models.Model):
@@ -15,6 +18,9 @@ class Patient(models.Model):
     # Shows the Object in the Query set after the object is saved into Database
     def __str__(self):
         return self.FirstName
+
+    def get_absolute_url(self):
+        return reverse('patient-detail', kwargs={'pk': self.pk})
 
 
 class Employee(models.Model):
