@@ -81,7 +81,7 @@ class PatientUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 # Require a user logged in and Author of view
 
 
-class PatientDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeletelView):
+class PatientDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Patient
 
     def test_func(self):

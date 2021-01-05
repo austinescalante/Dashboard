@@ -13,7 +13,7 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     # url pattern with variable, to have DV grab an object
     path('patient/<int:pk>/', PatientDetailView.as_view(), name='patient-detail'),
-    path('patient/new/', PatientCreateView.as_view(), name='patient-create')
+    path('patient/new/', PatientCreateView.as_view(), name='patient-create'),
     path('patient/<int:pk>/update/',
          PatientUpdateView.as_view(), name='patient-update'),
     path('patient/<int:pk>/delete/',
