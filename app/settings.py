@@ -9,8 +9,8 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-#Username: AustinE
-#PW: Testing321
+#Username: Adminuser
+#PW: Thebestpassword1
 #Email: austin@gmail.com
 
 #username: TestUser

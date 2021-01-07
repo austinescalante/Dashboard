@@ -14,6 +14,7 @@ class Patient(models.Model):
     Address = models.TextField(max_length=200)
     Sex = models.CharField(max_length=1)
     DOB = models.DateField(default=timezone.now)
+    Author = models.ForeignKey(User, on_delete=models.CASCADE)
 
     # Shows the Object in the Query set after the object is saved into Database
     def __str__(self):

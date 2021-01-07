@@ -9,6 +9,19 @@
         <p class="text-secondary">{{ user.email }}</p>
       </div>
     </div>
-    <!-- FORM HERE -->
+    <!-- FORM HERE, Saves image and background with enctype -->
+    <form method="POST" enctype="multipart/form-data">
+      <!--CSRF token, hidden token, protect form-security-->
+      {% csrf_token %}
+      <fieldset class = "form-group">
+          <legend class="border-bottom mb-4">Profile Info</legend>
+          <!--Print out form and submit button-->
+          {{ u_form|crispy }}
+          {{ p_form|crispy }}
+      </fieldset>
+      <div class = "form-group">
+          <button class="btn btn-outline-info" type="submit">Update</button>
+       </div>
+    </form>
   </div>
 {% endblock content %}
