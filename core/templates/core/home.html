@@ -2,6 +2,11 @@
 {% extends "core/base.html"%}
 <!--we want for loop in the home template to override that content section, wrap in content block-->
 {% block content %}
+<table class="table table-striped">
+  <thead>
+   
+  </thead>
+</table>
     <!-- Code block(two curly and two percent):For Loop for the posts dictionary, need to end loops within templates  -->
     {% for patient in patients %}
     <!-- Access a variable use double curly
@@ -9,19 +14,16 @@
         <p>By {{ post.Name }} on {{ post.Date_Hired }}</p>
          Print out content of post
         <p>{{ post.EmployeeID }}</p> -->
-        <article class="media content-section">
-            <div class="media-body">
+       
+        
+            
               <div class="article-metadata">
-                <a class="mr-2" href="#">Patient ID: {{ patient.PatientID }}</a>
-                <small class="text-muted">{{ patient.LastName }}</small>
-                <small class="text-muted"> SEX: {{ patient.Sex }}</small>
+                <a class="mr-2" href="{% url 'patient-detail' patient.id %}">Patient ID: {{ patient.PatientID }}</a>
+              <td>{{ patient.FirstName }}</td>
+              <td>{{ patient.LastName }}</td>
                 <small class="text-muted"> DOB: {{ patient.DOB }}</small>
-              </div>
-              <h2><a class="article-title" href="{% url 'patient-detail' patient.id %}">{{ patient.FirstName }}</a></h2>
-              <p class="article-content">Patient SSN: {{ patient.PatientSSN }}</p>
-              <p class="article-content">Address: {{ patient.Address }}</p>
             </div>
-          </article>
+
     {% endfor %}
 {% endblock content %}
 

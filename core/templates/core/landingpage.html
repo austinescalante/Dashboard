@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <section class = "showcase">
+        <header>
+            <h2 class = "logo">Health Dashboard</h2>
+            <div class = "toggle"></div>
+        </header>
+        <video src="{% static 'core/video.mp4' %}" muted loop autoplay></video>
+        <div class = "overlay"></div>
+        <div class="text">
+            <h2>Never Stop To </h2> 
+      <h3>Helping The World</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat.</p>
+        </div>
+    </section>
+        <div class ="menu">
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'register' %}">Register</a></li>
+            </ul>
+        </div>
+    <script>
+        const menuToggle= document.querySelector('.toggle')
+        const showcase= document.querySelector('.showcase')
+
+        menuToggle.addEventListener('click', ()=>{
+            menuToggle.classList.toggle('active')
+            showcase.classList.toggle('active')
+        })
+        
+    </script>
+</body>
+</html>

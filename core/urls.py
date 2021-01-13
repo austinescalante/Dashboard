@@ -9,7 +9,8 @@ urlpatterns = [
 
     #path('', views.home, name='home'),
     # Class based view
-    path('', PatientListView.as_view(), name='home'),
+    path('home/', PatientListView.as_view(), name='home'),
+    path('', views.landingpage, name='landingpage'),
     path('about/', views.about, name='about'),
     # url pattern with variable, to have DV grab an object
     path('patient/<int:pk>/', PatientDetailView.as_view(), name='patient-detail'),

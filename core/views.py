@@ -37,6 +37,9 @@ def home(request):
     }
     return render(request, 'core/home.html', context)
 
+
+def landingpage(request):
+    return render(request, 'core/landingpage.html')
 # Class based view
 
 
@@ -45,7 +48,7 @@ class PatientListView(ListView):
     template_name = 'core/home.html'
     # <app>/<model>_<viewtype>.html
     context_object_name = 'patients'
-    ordering = ['DOB']
+    ordering = ['PatientID']
 
 
 class PatientDetailView(DetailView):
