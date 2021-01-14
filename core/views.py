@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import Patient
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -29,6 +30,7 @@ posts = [
 data = Patient.objects.all()
 
 
+@login_required
 def home(request):
     # create a dictionary called context.Create a key within the dictionary called post, value assigned will be posts dictionary.
     # Now we can pass context to the render function and pass data into our template to use.
@@ -43,7 +45,7 @@ def landingpage(request):
 # Class based view
 
 
-class PatientListView(ListView):
+class PatientListView(LoginRequiredMixin, ListView):
     model = Patient
     template_name = 'core/home.html'
     # <app>/<model>_<viewtype>.html
